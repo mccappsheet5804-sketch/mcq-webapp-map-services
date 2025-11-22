@@ -34,7 +34,7 @@
             "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 
         L.tileLayer(tileLayerUrl, {
-            maxZoom: 19,
+            maxZoom: params.tile == "NO_LABELS_LIGHT_THEME" ? 24 : 19,
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
