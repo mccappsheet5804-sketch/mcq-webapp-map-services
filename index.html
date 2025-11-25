@@ -47,12 +47,12 @@
         const markers = [];
 
         // Add markers based on geoinfo
-        params.geoinfo.forEach(info => {
-            const type = Object.keys(info)[0]; // This could be USER, Q_1, Q_2, etc.
-            const { lat, lng, accuracy = "（沒有數據）" } = info[type];
+        params.geoinfo.split('|').forEach(info => {
+            const { type, lat, lng, accuracy } = info.split(',');
+            [lat, lng, accuracy] = [parseFloat(lat), parseFloat(lng), parseFloat(accuracy)];
 
             // Determine the icon URL
-            const iconUrl = type === 'USER'
+            const iconUrl = type === 'U'
                 ? iconMap.USER
                 : "圖庫/icons8-question-64.png"; // Default icon for Q_n types
 
@@ -66,9 +66,9 @@
                 })
             }).addTo(map)
 
-            if (type != 'USER') {
+            if (type != 'U') {
                 // Create popup content for Q_n types
-                const popupContent = `💡 問題 ${type.split('_')[1]}<br/>誤差：${accuracy} 尺`; // Extract n from Q_n
+                const popupContent = `💡 問題 ${type.split('_')[1]}<br/>誤差：${accuracy} 米`; // Extract n from Q_n
                 marker.bindPopup(popupContent);
             }
 
