@@ -68,7 +68,7 @@
 
             if (type != 'U') {
                 // Create popup content for Q_n types
-                const popupContent = `💡 問題 ${type.split('_')[1]}<br/>誤差：${accuracy} 米`; // Extract n from Q_n
+                const popupContent = `💡 問題 ${type.slice(1)}<br/>誤差：${accuracy} 米`; // Extract n from Q_n
                 marker.bindPopup(popupContent);
             }
 
