@@ -47,7 +47,7 @@
         const markers = [];
 
         // Add markers based on geoinfo
-        params.geoinfo.split('|').forEach(info => {
+        params.geoinfo.split('@').forEach(info => {
             let [ type, lat, lng, accuracy ] = info.split(',');
             [ lat, lng, accuracy ] = [parseFloat(lat), parseFloat(lng), parseFloat(accuracy)];
 
