@@ -48,7 +48,7 @@
 
         // Add markers based on geoinfo
         params.geoinfo.split('|').forEach(info => {
-            const { type, lat, lng, accuracy } = info.split(',');
+            let { type, lat, lng, accuracy } = info.split(',');
             [lat, lng, accuracy] = [parseFloat(lat), parseFloat(lng), parseFloat(accuracy)];
 
             // Determine the icon URL
