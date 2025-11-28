@@ -85,7 +85,8 @@
                     })
                 }).addTo(map);
 
-                const popupContent = `${type != 'U' ? `💡 問題 ${questionNoticeList.includes(index) || params.get('usage') == "ADMIN" ? type.slice(1) : "***"}` : `🤠 用戶`}<br/>誤差：${accuracy} 米`;
+				const queryParams = new URLSearchParams(window.location.search);
+                const popupContent = `${type != 'U' ? `💡 問題 ${questionNoticeList.includes(index) || queryParams.get('usage') == "ADMIN" ? type.slice(1) : "***"}` : `🤠 用戶`}<br/>誤差：${accuracy} 米`;
                 marker.bindPopup(popupContent);
 
                 // Add click event to marker
