@@ -63,12 +63,12 @@
         // Main function to initialize the map and markers
         async function initMap() {
             const questionNoticeList = await fetchQuestionNotice(); // Await the fetch
+			console.log(JSON.stringify(questionNoticeList,null,4))
 
             // Add markers based on geoinfo
             params.geoinfo.split('@').forEach((info, index) => {
                 let [type, lat, lng, accuracy] = info.split(',');
                 [lat, lng, accuracy] = [parseFloat(lat), parseFloat(lng), parseFloat(accuracy)];
-				console.log(type, index+1)
 
                 // Determine the icon URL
                 const iconUrl = type === 'U'
